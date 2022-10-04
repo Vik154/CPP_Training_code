@@ -1,9 +1,3 @@
-build
-logs/*.txt
-*.[ao]
-
-
-#Auto_generate
 # Prerequisites
 *.d
 
