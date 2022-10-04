@@ -1,25 +1,25 @@
 /*STACK_VERSION_1.0*/
 #include <iostream>
 #include <typeinfo>
-#include <new>			// Для обработчика ошибок Try/catch
+#include <new>			// Р”Р»СЏ РѕР±СЂР°Р±РѕС‚С‡РёРєР° РѕС€РёР±РѕРє Try/catch
 
 template <typename Type>
 class Stack {
 private:
-	Type* stack;						// Указатель на стек
-	int count;							// Счётчик элементов
+	Type* stack;						// РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃС‚РµРє
+	int count;							// РЎС‡С‘С‚С‡РёРє СЌР»РµРјРµРЅС‚РѕРІ
 public:
-	Stack();							// Конструктор инициализации (создания экземпляра)
-	Stack(const Stack<Type> &stk);		// Конструктор копирования
-	~Stack();							// Деструктор (освобождение памяти)
+	Stack();							// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё (СЃРѕР·РґР°РЅРёСЏ СЌРєР·РµРјРїР»СЏСЂР°)
+	Stack(const Stack<Type> &stk);		// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	~Stack();							// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ (РѕСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё)
 	
-	void push(const Type &element);		// Добавление элемента в вершину стека
-	void print();						// Отображение инфы в stdout
-	Type pop();							// Удалить верхний элемент и вернуть его
-	Type head();						// Получить верхний элемент  
+	void push(const Type &element);		// Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ РІРµСЂС€РёРЅСѓ СЃС‚РµРєР°
+	void print();						// РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РёРЅС„С‹ РІ stdout
+	Type pop();							// РЈРґР°Р»РёС‚СЊ РІРµСЂС…РЅРёР№ СЌР»РµРјРµРЅС‚ Рё РІРµСЂРЅСѓС‚СЊ РµРіРѕ
+	Type head();						// РџРѕР»СѓС‡РёС‚СЊ РІРµСЂС…РЅРёР№ СЌР»РµРјРµРЅС‚  
 
-	int  get_size() { return count; }		// Получить количество элементов в стеке
-	bool is_empty() { return count == 0; }	// Проверить пустой стек или нет
+	int  get_size() { return count; }		// РџРѕР»СѓС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ СЃС‚РµРєРµ
+	bool is_empty() { return count == 0; }	// РџСЂРѕРІРµСЂРёС‚СЊ РїСѓСЃС‚РѕР№ СЃС‚РµРє РёР»Рё РЅРµС‚
 
 	Stack<Type> operator = (Stack stk);
 };
@@ -116,14 +116,14 @@ template <typename Type>
 void pack(Stack<Type> &stk) {
 	int choice;
 	while (true) {
-		std::cout << "Управление стеком: 1 - добавить элемент, 2 - удалить, 3 - напечатать, 4 - размер\n";
-		std::cout << "5 - проверка на наличие элементов, 6 - Выход\n";
+		std::cout << "РЈРїСЂР°РІР»РµРЅРёРµ СЃС‚РµРєРѕРј: 1 - РґРѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚, 2 - СѓРґР°Р»РёС‚СЊ, 3 - РЅР°РїРµС‡Р°С‚Р°С‚СЊ, 4 - СЂР°Р·РјРµСЂ\n";
+		std::cout << "5 - РїСЂРѕРІРµСЂРєР° РЅР° РЅР°Р»РёС‡РёРµ СЌР»РµРјРµРЅС‚РѕРІ, 6 - Р’С‹С…РѕРґ\n";
 		do {
 			std::cin >> choice;
 			while (std::cin.fail()) {
 				std::cin.clear();
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-				std::cout << "Введите значение повторно: ";
+				std::cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РїРѕРІС‚РѕСЂРЅРѕ: ";
 				std::cin >> choice;
 			}
 		} while (choice < 1 || choice > 6);
@@ -131,14 +131,14 @@ void pack(Stack<Type> &stk) {
 		Type tmp;
 		switch (choice)	{
 		case 1:
-			std::cout << "Введите элемент для добавления: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ: ";
 			std::cin >> tmp;
 			stk.push(tmp);
-			std::cout << "Элемент " << tmp << " добавлен\n";
+			std::cout << "Р­Р»РµРјРµРЅС‚ " << tmp << " РґРѕР±Р°РІР»РµРЅ\n";
 			break;
 		case 2:
 			tmp = stk.pop();
-			std::cout << "Элемент " << tmp << " удалён\n";
+			std::cout << "Р­Р»РµРјРµРЅС‚ " << tmp << " СѓРґР°Р»С‘РЅ\n";
 			break;
 		case 3:
 			stk.print();
@@ -148,11 +148,11 @@ void pack(Stack<Type> &stk) {
 			break;
 		case 5:
 			if (stk.is_empty() != 0) { 
-				std::cout << "Что-то есть\n";
+				std::cout << "Р§С‚Рѕ-С‚Рѕ РµСЃС‚СЊ\n";
 				break;
 			}
 			else {
-				std::cout << "Стек пуст\n";
+				std::cout << "РЎС‚РµРє РїСѓСЃС‚\n";
 				break;
 			}
 		case 6:
