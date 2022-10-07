@@ -1,4 +1,4 @@
-/*LIST Version 1.0 --- Реализация односвязного списка*/
+/*LIST Version 1.0 ---- Реализация односвязного списка*/
 #include <iostream>
 #include <memory>
 #include <list>
