@@ -1,4 +1,4 @@
-/*Queue Version 1.0 --- Реализация очереди на основе динамического массива*/
+/*Queue Version 1.0 --- Р РµР°Р»РёР·Р°С†РёСЏ РѕС‡РµСЂРµРґРё РЅР° РѕСЃРЅРѕРІРµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°*/
 
 #include <iostream>
 #include <queue>
@@ -9,25 +9,25 @@ void testing();
 template <typename Type>
 class Queue {
 private:
-	Type *parray;				// Динамический массив
-	int size;					// Размер массива CAPACITY
-	int begin;					// Начало очереди FRONT
-	int end;					// Конец очереди  REAR
-	int count;					// Кол-во элементов очереди
+	Type *parray;				// Р”РёРЅР°РјРёС‡РµСЃРєРёР№ РјР°СЃСЃРёРІ
+	int size;					// Р Р°Р·РјРµСЂ РјР°СЃСЃРёРІР° CAPACITY
+	int begin;					// РќР°С‡Р°Р»Рѕ РѕС‡РµСЂРµРґРё FRONT
+	int end;					// РљРѕРЅРµС† РѕС‡РµСЂРµРґРё  REAR
+	int count;					// РљРѕР»-РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РѕС‡РµСЂРµРґРё
 public:
-	Queue(int size);			// Конструктор по умолчанию
-	Queue(const Queue<Type> &); // Конструктор копирования
-	~Queue();					// Деструктор
+	Queue(int size);			// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+	Queue(const Queue<Type> &); // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	~Queue();					// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 
-	void push(const Type &);	// Добавить элемент в очередь
-	void show();				// Печать, вывод в поток (на экран)
-	Type pop();					// Удалить элемент из очереди и вернуть значение
-	Type get()   const;			// Получить значение 1-го элемента очереди
+	void push(const Type &);	// Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РѕС‡РµСЂРµРґСЊ
+	void show();				// РџРµС‡Р°С‚СЊ, РІС‹РІРѕРґ РІ РїРѕС‚РѕРє (РЅР° СЌРєСЂР°РЅ)
+	Type pop();					// РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚ РёР· РѕС‡РµСЂРµРґРё Рё РІРµСЂРЅСѓС‚СЊ Р·РЅР°С‡РµРЅРёРµ
+	Type get()   const;			// РџРѕР»СѓС‡РёС‚СЊ Р·РЅР°С‡РµРЅРёРµ 1-РіРѕ СЌР»РµРјРµРЅС‚Р° РѕС‡РµСЂРµРґРё
 
-	int get_size()  { return size; }		// Размер очереди
-	int get_count() { return count;}		// Код-во элементов
-	bool empty()	{ return count == 0; }	// Пустая ли очередь
-	bool full()  { return count == size; }	// Заполнилась ли очередь
+	int get_size()  { return size; }		// Р Р°Р·РјРµСЂ РѕС‡РµСЂРµРґРё
+	int get_count() { return count;}		// РљРѕРґ-РІРѕ СЌР»РµРјРµРЅС‚РѕРІ
+	bool empty()	{ return count == 0; }	// РџСѓСЃС‚Р°СЏ Р»Рё РѕС‡РµСЂРµРґСЊ
+	bool full()  { return count == size; }	// Р—Р°РїРѕР»РЅРёР»Р°СЃСЊ Р»Рё РѕС‡РµСЂРµРґСЊ
 };
 
 
@@ -39,7 +39,7 @@ int main() {
 
 template <typename Type>
 Queue<Type>::Queue(int size) {
-	// Выделили память под динамический массив
+	// Р’С‹РґРµР»РёР»Рё РїР°РјСЏС‚СЊ РїРѕРґ РґРёРЅР°РјРёС‡РµСЃРєРёР№ РјР°СЃСЃРёРІ
 	parray = new Type[size + 1];
 	this->size = size;
 	begin = 0;
@@ -59,7 +59,7 @@ Queue<Type>::Queue(const Queue<Type> &other) {
 	end    = other.end;
 	count  = other.count;
 	parray = new Type[size + 1];
-	// Цикл копирования очереди по-элементно
+	// Р¦РёРєР» РєРѕРїРёСЂРѕРІР°РЅРёСЏ РѕС‡РµСЂРµРґРё РїРѕ-СЌР»РµРјРµРЅС‚РЅРѕ
 	for (int i = 0; i < size; ++i) {
 		parray[i] = other.parray[i];
 	}
@@ -67,21 +67,21 @@ Queue<Type>::Queue(const Queue<Type> &other) {
 
 template <typename Type>
 void Queue<Type>::push(const Type &element) {
-	assert(count < size);		// Проверить, есть ли место в очереди
-	parray[end++] = element;	// В массив добавили элемент по индексу
-	count++;					// Счетчик увеличился
-	if (end > size) {			// Проверка кругового заполнения очереди
-		end -= size + 1;		// Возвращает end на начало очереди
+	assert(count < size);		// РџСЂРѕРІРµСЂРёС‚СЊ, РµСЃС‚СЊ Р»Рё РјРµСЃС‚Рѕ РІ РѕС‡РµСЂРµРґРё
+	parray[end++] = element;	// Р’ РјР°СЃСЃРёРІ РґРѕР±Р°РІРёР»Рё СЌР»РµРјРµРЅС‚ РїРѕ РёРЅРґРµРєСЃСѓ
+	count++;					// РЎС‡РµС‚С‡РёРє СѓРІРµР»РёС‡РёР»СЃСЏ
+	if (end > size) {			// РџСЂРѕРІРµСЂРєР° РєСЂСѓРіРѕРІРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ РѕС‡РµСЂРµРґРё
+		end -= size + 1;		// Р’РѕР·РІСЂР°С‰Р°РµС‚ end РЅР° РЅР°С‡Р°Р»Рѕ РѕС‡РµСЂРµРґРё
 	}
 }
 
 template <typename Type>
 Type Queue<Type>::pop() {
-	assert(count > 0);				// Проверить, есть ли элементы в очереди
-	Type rvalue = parray[begin++];	// Достать первый элемент из очереди
+	assert(count > 0);				// РџСЂРѕРІРµСЂРёС‚СЊ, РµСЃС‚СЊ Р»Рё СЌР»РµРјРµРЅС‚С‹ РІ РѕС‡РµСЂРµРґРё
+	Type rvalue = parray[begin++];	// Р”РѕСЃС‚Р°С‚СЊ РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РёР· РѕС‡РµСЂРµРґРё
 	count--;
-	if (begin > size) {				// Проверка кругового заполнения очереди
-		begin -= size + 1;			// Возвращаем behin на начало очереди
+	if (begin > size) {				// РџСЂРѕРІРµСЂРєР° РєСЂСѓРіРѕРІРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ РѕС‡РµСЂРµРґРё
+		begin -= size + 1;			// Р’РѕР·РІСЂР°С‰Р°РµРј behin РЅР° РЅР°С‡Р°Р»Рѕ РѕС‡РµСЂРµРґРё
 	}
 	return rvalue;
 }
@@ -95,7 +95,7 @@ Type Queue<Type>::get() const {
 template <typename Type>
 void Queue<Type>::show() {
 	if (end == 0 && begin == 0) { 
-		std::cout << "Очередь пустая\n"; 
+		std::cout << "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°СЏ\n"; 
 	}
 	else {
 		for (int i = begin; i < end; ++i) {
@@ -106,7 +106,7 @@ void Queue<Type>::show() {
 	}
 }
 
-// Тест
+// РўРµСЃС‚
 void testing() {
     srand(time(NULL));
     typedef unsigned int ui;
@@ -114,31 +114,31 @@ void testing() {
 	Queue<int> my_queue(size);
 	std::queue<int> stl_queue;
  
-    std::cout << "Начало теста на самодельной очереди\n";
+    std::cout << "РќР°С‡Р°Р»Рѕ С‚РµСЃС‚Р° РЅР° СЃР°РјРѕРґРµР»СЊРЅРѕР№ РѕС‡РµСЂРµРґРё\n";
     clock_t time = clock();
     for (ui i = 0; i < size; ++i) {
         my_queue.push(rand() % RAND_MAX);
     }
     time = clock() - time;
-    std::cout << "Довавление элементов: " << (double)time / CLOCKS_PER_SEC << " сек." << std::endl;
+    std::cout << "Р”РѕРІР°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ: " << (double)time / CLOCKS_PER_SEC << " СЃРµРє." << std::endl;
 
     time = clock();
     while (!my_queue.empty()) { my_queue.pop(); }
     time = clock() - time;
-    std::cout << "Удаление элементов: " << (double)time / CLOCKS_PER_SEC << " сек." << std::endl;
-    std::cout << "====================Тест завершился====================\n";
+    std::cout << "РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ: " << (double)time / CLOCKS_PER_SEC << " СЃРµРє." << std::endl;
+    std::cout << "====================РўРµСЃС‚ Р·Р°РІРµСЂС€РёР»СЃСЏ====================\n";
   
-    std::cout << "Начало теста на очереди STL\n";
+    std::cout << "РќР°С‡Р°Р»Рѕ С‚РµСЃС‚Р° РЅР° РѕС‡РµСЂРµРґРё STL\n";
     time = clock();
     for (ui i = 0; i < size; ++i) {
         stl_queue.push(rand() % RAND_MAX);
     }
     time = clock() - time;
-    std::cout << "Довавление элементов: " << (double)time / CLOCKS_PER_SEC << " сек." << std::endl;
+    std::cout << "Р”РѕРІР°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ: " << (double)time / CLOCKS_PER_SEC << " СЃРµРє." << std::endl;
 
     time = clock();
     while (!stl_queue.empty()) { stl_queue.pop(); }
     time = clock() - time;
-    std::cout << "Удаление элементов: " << (double)time / CLOCKS_PER_SEC << " сек." << std::endl;
-    std::cout << "====================Тест завершился====================\n";
+    std::cout << "РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ: " << (double)time / CLOCKS_PER_SEC << " СЃРµРє." << std::endl;
+    std::cout << "====================РўРµСЃС‚ Р·Р°РІРµСЂС€РёР»СЃСЏ====================\n";
 }
