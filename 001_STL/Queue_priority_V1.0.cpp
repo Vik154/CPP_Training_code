@@ -1,4 +1,4 @@
-﻿/*Priority Queue Versio  3.0 - Очередь с приоритетом на основе динамического массива*/
+﻿/*Priority Queue Versio  3.0 -- Очередь с приоритетом на основе динамического массива*/
 
 #include <iostream>
 #include <queue>
