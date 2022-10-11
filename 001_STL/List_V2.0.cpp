@@ -1,4 +1,4 @@
-/*List version 2.0 - Реализация двусвязного списка*/
+/*List version 2.0 -- Реализация двусвязного списка*/
 
 #include <iostream>
 #include <list>
